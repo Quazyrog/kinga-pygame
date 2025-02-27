@@ -1,24 +1,15 @@
 import pygame
 
+import level
+
 
 class Globals:
     running = True
     width = 1280
     height = 720
-    scale_value = 3
+    scale_value = 2
     tile_base_size = 32
     grass_texture = None
-
-
-class Level:
-    def __init__(self):
-        self.width = 3
-        self.height = 2
-        self._tiles = [["grass", "brick"], ["water", "grass"], ["water", "grass"]]
-
-    def __getitem__(self, coord):
-        x, y = coord
-        return self._tiles[x][y]
 
 
 def handle_events():
@@ -38,7 +29,7 @@ def main():
     Globals.brick_texture = pygame.image.load('assets/brick.png')
     Globals.brick_texture = pygame.transform.scale_by(Globals.brick_texture, Globals.scale_value)
 
-    l = Level()
+    l = level.get_arena_level(12, 12)
     while Globals.running:
         handle_events()
         screen .fill("black")
