@@ -39,3 +39,31 @@ def get_arena_level(width, height):
             level[x, y] = "grass"
 
     return level
+
+
+def load_level(filename):
+    input_file = open(filename)
+    # TODO read width and height
+    width = 7
+    height = 6
+    lvl = get_empty_level(width, height, "water")
+
+    y = 0
+    for line in input_file:
+        line = line.strip()
+        line = line.split(",")
+
+        x = 0
+        for e in line:
+            if e == "g":
+                lvl[x, y] = "grass"
+            elif e == "b":
+                lvl[x, y] = "brick"
+            elif e == "w":
+                lvl[x, y] = "water"
+            x += 1
+
+        y += 1
+
+    input_file.close()
+    return lvl

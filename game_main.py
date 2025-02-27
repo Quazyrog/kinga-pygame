@@ -29,7 +29,7 @@ def main():
     Globals.brick_texture = pygame.image.load('assets/brick.png')
     Globals.brick_texture = pygame.transform.scale_by(Globals.brick_texture, Globals.scale_value)
 
-    l = level.get_arena_level(12, 12)
+    l = level.load_level("levels/example_01.csv")
     while Globals.running:
         handle_events()
         screen .fill("black")
